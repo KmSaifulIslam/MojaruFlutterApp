@@ -22,7 +22,7 @@ class DetailsPage extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.popularFoodImageSize,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
@@ -32,11 +32,12 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
           ),
+
           Positioned(
             top: Dimensions.height45,
             left: Dimensions.width20,
             right: Dimensions.width20,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIcon(icon: Icons.arrow_back_ios),
@@ -109,7 +110,7 @@ class DetailsPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: Dimensions.height10,),
-                      ExpandableTextWidget(text: "You may think that the earth is a pretty big place, but the Earth isn't even the biggest planet is the solar system."),
+                      const ExpandableTextWidget(text: "You may think that the earth is a pretty big place, but the Earth isn't even the biggest planet is the solar system."),
                       SizedBox(height: Dimensions.height20,),
                       Column(
                         children: [
@@ -135,7 +136,7 @@ class DetailsPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(Dimensions.radius15),
                                               color: AppColors.mainColor,
-                                              image: DecorationImage(
+                                              image: const DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: AssetImage(
                                                     "assets/images/img2.jpg"
@@ -159,7 +160,7 @@ class DetailsPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(Dimensions.radius15),
                                               color: AppColors.mainColor,
-                                              image: DecorationImage(
+                                              image: const DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: AssetImage(
                                                     "assets/images/img3.jpg"
@@ -183,7 +184,7 @@ class DetailsPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(Dimensions.radius15),
                                               color: AppColors.mainColor,
-                                              image: DecorationImage(
+                                              image: const DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: AssetImage(
                                                     "assets/images/img2.jpg"
@@ -207,7 +208,7 @@ class DetailsPage extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(Dimensions.radius15),
                                               color: AppColors.mainColor,
-                                              image: DecorationImage(
+                                              image: const DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: AssetImage(
                                                     "assets/images/img3.jpg"
