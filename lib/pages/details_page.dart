@@ -32,7 +32,6 @@ class DetailsPage extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             top: Dimensions.height45,
             left: Dimensions.width20,
@@ -40,8 +39,8 @@ class DetailsPage extends StatelessWidget {
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back_ios),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+                Icon(Icons.line_weight, color: Color(0xffe2d2fa), size: 30),
+                Icon(Icons.person_2_outlined, color: Color(0xffe2d2fa), size: 30),
               ],
             ),
           ),
