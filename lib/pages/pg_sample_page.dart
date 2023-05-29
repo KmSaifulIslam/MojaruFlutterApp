@@ -12,6 +12,7 @@ class PgSamplePage extends StatefulWidget {
 }
 
 class _PgSamplePageState extends State<PgSamplePage> {
+  var _value = "-1";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,38 +24,65 @@ class _PgSamplePageState extends State<PgSamplePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BigText(text: "PG/Sample"),
-
               SizedBox(height: Dimensions.height30,),
+
               SizedBox(
                 height: Dimensions.height20*3,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "Choose",
-                      hintStyle: TextStyle(color: Colors.cyan, fontSize: 15),
-                      labelText: "Product Group",
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      suffixIcon: Icon(Icons.arrow_drop_down),
+                child: DropdownButtonFormField(
+                  style: TextStyle(color: Colors.cyan),
+                  decoration: InputDecoration(
+                      labelText: "Product Name",
                       border: OutlineInputBorder()
                   ),
+                  value: _value,
+                  items: [
+                    DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                    DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                    DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                    DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                    DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                    DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                  ],
+                  onChanged: (v){},
                 ),
               ),
+              // SizedBox(
+              //   height: Dimensions.height20*3,
+              //   child: TextFormField(
+              //     decoration: const InputDecoration(
+              //         hintText: "Choose",
+              //         hintStyle: TextStyle(color: Colors.cyan, fontSize: 15),
+              //         labelText: "Product Group",
+              //         floatingLabelBehavior: FloatingLabelBehavior.always,
+              //         suffixIcon: Icon(Icons.arrow_drop_down),
+              //         border: OutlineInputBorder()
+              //     ),
+              //   ),
+              // ),
 
               SizedBox(height: Dimensions.height20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    height: Dimensions.height20*3,
+                    height: Dimensions.height20*3.1,
                     width: Dimensions.screenWidth/1.4,
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "Choose",
-                          hintStyle: TextStyle(color: Colors.cyan, fontSize: 15),
+                    child: DropdownButtonFormField(
+                      style: TextStyle(color: Colors.cyan),
+                      decoration: InputDecoration(
                           labelText: "Literature",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(Icons.arrow_drop_down),
                           border: OutlineInputBorder()
                       ),
+                      value: _value,
+                      items: [
+                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      ],
+                      onChanged: (v){},
                     ),
                   ),
                   Container(
@@ -80,17 +108,24 @@ class _PgSamplePageState extends State<PgSamplePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    height: Dimensions.height20*3,
+                    height: Dimensions.height20*3.1,
                     width: Dimensions.screenWidth/1.4,
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "Choose",
-                          hintStyle: TextStyle(color: Colors.cyan, fontSize: 15),
+                    child: DropdownButtonFormField(
+                      style: TextStyle(color: Colors.cyan),
+                      decoration: InputDecoration(
                           labelText: "Physician Sample",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(Icons.arrow_drop_down),
                           border: OutlineInputBorder()
                       ),
+                      value: _value,
+                      items: [
+                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      ],
+                      onChanged: (v){},
                     ),
                   ),
                   Container(
@@ -102,6 +137,7 @@ class _PgSamplePageState extends State<PgSamplePage> {
                       decoration: const InputDecoration(
                           hintText: "00",
                           hintStyle: TextStyle(color: Colors.black45, fontSize: 15),
+
                           border: OutlineInputBorder()
                       ),
                     ),
@@ -115,17 +151,24 @@ class _PgSamplePageState extends State<PgSamplePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    height: Dimensions.height20*3,
+                    height: Dimensions.height20*3.1,
                     width: Dimensions.screenWidth/1.4,
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "Choose",
-                          hintStyle: TextStyle(color: Colors.cyan, fontSize: 15),
+                    child: DropdownButtonFormField(
+                      style: TextStyle(color: Colors.cyan),
+                      decoration: InputDecoration(
                           labelText: "Gift",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(Icons.arrow_drop_down),
                           border: OutlineInputBorder()
                       ),
+                      value: _value,
+                      items: [
+                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      ],
+                      onChanged: (v){},
                     ),
                   ),
                   Container(
