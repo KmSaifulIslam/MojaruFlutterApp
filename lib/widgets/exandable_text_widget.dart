@@ -35,17 +35,17 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: secondHalf.isEmpty?SmallText(text: firstHalf):Column(
+      child: secondHalf.isEmpty?Text(firstHalf):Column(
         children: [
-          SmallText(text: hiddenText?(firstHalf+"..."):(firstHalf+secondHalf), size: 20,color: AppColors.titleColor,),
+          Text( hiddenText?(firstHalf+"..."):(firstHalf+secondHalf),),
           InkWell(
             onTap: (){
 
             },
             child: Row(
               children: [
-                SmallText(text: "Show morer"),
-                Icon(Icons.arrow_drop_down, color: AppColors.mainColor,)
+                // Text("Show morer"),
+                // Icon(Icons.arrow_drop_down, color: AppColors.mainColor,)
               ],
             ),
           )

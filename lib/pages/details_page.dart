@@ -21,7 +21,7 @@ class DetailsPage extends StatelessWidget {
             right: 0,
             child: Container(
               width: double.maxFinite,
-              height: Dimensions.popularFoodImageSize,
+              height: Dimensions.popularImageSize,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class DetailsPage extends StatelessWidget {
               left: 0,
               right: 0,
               bottom: 0,
-              top: Dimensions.popularFoodImageSize-20,
+              top: Dimensions.popularImageSize-40,
               child: Container(
                   padding: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20,top:Dimensions.height20),
                   decoration: BoxDecoration(
@@ -109,8 +109,8 @@ class DetailsPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: Dimensions.height10,),
-                      const ExpandableTextWidget(text: "You may think that the earth is a pretty big place, but the Earth isn't even the biggest planet is the solar system."),
-                      SizedBox(height: Dimensions.height20,),
+                      const ExpandableTextWidget(text: "You may think that the earth is a pretty big place, but the Earth isn't even the biggest planet is the solar system. the Earth isn't even the biggest planet is the solar system."),
+                      SizedBox(height: Dimensions.height10,),
                       Column(
                         children: [
                           Row(
@@ -233,9 +233,9 @@ class DetailsPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-          height: 150,
+          height: Dimensions.height45*3.2,
           padding: EdgeInsets.only(
-            top: Dimensions.height30,
+            top: Dimensions.height20,
             left: Dimensions.width20,
             right: Dimensions.width20,
           ),
@@ -262,7 +262,7 @@ class DetailsPage extends StatelessWidget {
               ),
               SizedBox(height: Dimensions.height15,),
               Container(
-                padding: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, top: Dimensions.height20,bottom: Dimensions.height20),
+                padding: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10, top: Dimensions.height20,bottom: Dimensions.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.mainColor,
