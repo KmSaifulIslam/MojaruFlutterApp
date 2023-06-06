@@ -2,6 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:mojaru_f_app/models/Gifts.dart';
+import 'package:mojaru_f_app/models/LiteratureGroups.dart';
+import 'package:mojaru_f_app/models/PhysicianGroups.dart';
+import 'package:mojaru_f_app/models/PhysicianSamples.dart';
 import 'package:mojaru_f_app/widgets/big_text.dart';
 import 'package:mojaru_f_app/widgets/small_text.dart';
 
@@ -15,8 +19,30 @@ class PgSamplePage extends StatefulWidget {
 }
 
 class _PgSamplePageState extends State<PgSamplePage> {
+  _PgSamplePageState() {
+    _selectedPG = _physicianGroupsSizeList[0];
+    _selectedLG = _literatureGroupsSizeList[0];
+    _selectedPS = _physicianSamplesSizeList[0];
+    _selectedGift = _giftSizeList[0];
+
+  }
+
   var _value = "-1";
   String stringResponse = "Hello...";
+  List _giftSizeList = ["Choose"];
+  List _physicianGroupsSizeList = ["Choose"];
+  List _literatureGroupsSizeList = ["Choose"];
+  List _physicianSamplesSizeList = ["Choose"];
+  String? _selectedGift = "";
+  String? _selectedPG = "";
+  String? _selectedLG = "";
+  String? _selectedPS = "";
+  List _itemList = ["Select"];
+
+  late List gifts;
+  late List physicianGroups;
+  late List literatureGroups;
+  late List physicianSamples;
 
   Future fetchData() async{
     var url = Uri.http("api.npoint.io","/7c19bf809c44af11b717");
@@ -28,17 +54,66 @@ class _PgSamplePageState extends State<PgSamplePage> {
 
         Map data = jsonDecode(response.body);
 
-        data.forEach((key, value) {
+        gifts = data['gifts'];
+        physicianGroups = data['physicianGroups'];
+        literatureGroups = data['literatureGroups'];
+        physicianSamples = data['physicianSamples'];
 
-          if(key == "gifts"){
-            stringResponse = "------gift Data------";
-            print(stringResponse);
-          }
 
-          print("--------------------------");
-          print(key);
-          print(value);
+        gifts.forEach((element) {
+          print(element);
 
+          Map g = element;
+          g.forEach((key, value) {
+            if(key == 'name'){
+              _itemList.add(value.toString());
+              _giftSizeList.add(value);
+              print(value);
+            }
+
+          });
+        });
+
+        physicianGroups.forEach((element) {
+          print(element);
+
+          Map pg = element;
+          pg.forEach((key, value) {
+            if(key == 'name'){
+              _itemList.add(value.toString());
+              _physicianGroupsSizeList.add(value);
+              print(value);
+            }
+
+          });
+        });
+
+        literatureGroups.forEach((element) {
+          print(element);
+
+          Map lg = element;
+          lg.forEach((key, value) {
+            if(key == 'name'){
+              _itemList.add(value.toString());
+              _literatureGroupsSizeList.add(value);
+              print(value);
+            }
+
+          });
+        });
+
+        physicianSamples.forEach((element) {
+
+          print(element);
+
+          Map ps = element;
+          ps.forEach((key, value) {
+            if(key == 'name'){
+              _physicianSamplesSizeList.add(value);
+              print(value);
+            }
+
+          });
         });
       });
     }
@@ -51,7 +126,6 @@ class _PgSamplePageState extends State<PgSamplePage> {
   @override
   void initState(){
     fetchData();
-    print("Called initState.....");
     super.initState();
   }
 
@@ -78,16 +152,23 @@ class _PgSamplePageState extends State<PgSamplePage> {
                       labelText: "Product Name",
                       border: OutlineInputBorder()
                   ),
-                  value: _value,
-                  items: [
-                    DropdownMenuItem(child: Text("Choose"), value: "-1",),
-                    DropdownMenuItem(child: Text("Item 1"), value: "1",),
-                    DropdownMenuItem(child: Text("Item-2"), value: "2",),
-                    DropdownMenuItem(child: Text("Item-3"), value: "3",),
-                    DropdownMenuItem(child: Text("Item-4"), value: "4",),
-                    DropdownMenuItem(child: Text("Item-5"), value: "5",),
-                  ],
-                  onChanged: (v){},
+
+                  value: _selectedPG,
+                  items: _physicianGroupsSizeList.map(
+                          (e)=> DropdownMenuItem(child: Text(e), value: e,)
+                  ).toList(),
+                  onChanged: (val){},
+
+                  // value: _value,
+                  // items: [
+                  //   DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                  //   DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                  //   DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                  //   DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                  //   DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                  //   DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                  // ],
+                  // onChanged: (v){},
                 ),
               ),
               // SizedBox(
@@ -117,16 +198,23 @@ class _PgSamplePageState extends State<PgSamplePage> {
                           labelText: "Literature",
                           border: OutlineInputBorder()
                       ),
-                      value: _value,
-                      items: [
-                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
-                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
-                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
-                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
-                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
-                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
-                      ],
-                      onChanged: (v){},
+
+                      value: _selectedLG,
+                      items: _literatureGroupsSizeList.map(
+                              (e)=> DropdownMenuItem(child: Text(e), value: e,)
+                      ).toList(),
+                      onChanged: (val){},
+
+                      // value: _value,
+                      // items: [
+                      //   DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                      //   DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                      //   DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                      //   DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                      //   DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                      //   DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      // ],
+                      // onChanged: (v){},
                     ),
                   ),
                   Container(
@@ -160,16 +248,22 @@ class _PgSamplePageState extends State<PgSamplePage> {
                           labelText: "Physician Sample",
                           border: OutlineInputBorder()
                       ),
-                      value: _value,
-                      items: [
-                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
-                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
-                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
-                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
-                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
-                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
-                      ],
-                      onChanged: (v){},
+                      value: _selectedPS,
+                      items: _physicianSamplesSizeList.map(
+                              (e)=> DropdownMenuItem(child: Text(e), value: e,)
+                      ).toList(),
+                      onChanged: (val){},
+
+                      // value: _value,
+                      // items: [
+                      //   DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                      //   DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                      //   DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                      //   DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                      //   DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                      //   DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      // ],
+                      // onChanged: (v){},
                     ),
                   ),
                   Container(
@@ -203,16 +297,23 @@ class _PgSamplePageState extends State<PgSamplePage> {
                           labelText: "Gift",
                           border: OutlineInputBorder()
                       ),
-                      value: _value,
-                      items: [
-                        DropdownMenuItem(child: Text("Choose"), value: "-1",),
-                        DropdownMenuItem(child: Text("Item 1"), value: "1",),
-                        DropdownMenuItem(child: Text("Item-2"), value: "2",),
-                        DropdownMenuItem(child: Text("Item-3"), value: "3",),
-                        DropdownMenuItem(child: Text("Item-4"), value: "4",),
-                        DropdownMenuItem(child: Text("Item-5"), value: "5",),
-                      ],
-                      onChanged: (v){},
+
+                      value: _selectedGift,
+                      items: _giftSizeList.map(
+                              (e)=> DropdownMenuItem(child: Text(e), value: e,)
+                      ).toList(),
+                      onChanged: (val){},
+
+                      // value: _value,
+                      // items: [
+                      //   DropdownMenuItem(child: Text("Choose"), value: "-1",),
+                      //   DropdownMenuItem(child: Text("Item 1"), value: "1",),
+                      //   DropdownMenuItem(child: Text("Item-2"), value: "2",),
+                      //   DropdownMenuItem(child: Text("Item-3"), value: "3",),
+                      //   DropdownMenuItem(child: Text("Item-4"), value: "4",),
+                      //   DropdownMenuItem(child: Text("Item-5"), value: "5",),
+                      // ],
+                      // onChanged: (v){},
                     ),
                   ),
                   Container(
