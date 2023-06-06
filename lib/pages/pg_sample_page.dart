@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:mojaru_f_app/widgets/big_text.dart';
 import 'package:mojaru_f_app/widgets/small_text.dart';
@@ -13,6 +16,47 @@ class PgSamplePage extends StatefulWidget {
 
 class _PgSamplePageState extends State<PgSamplePage> {
   var _value = "-1";
+  String stringResponse = "Hello...";
+
+  Future fetchData() async{
+    var url = Uri.http("api.npoint.io","/7c19bf809c44af11b717");
+    var response = await http.get(url);
+
+    if(response.statusCode == 200) {
+      setState(() {
+        stringResponse = "gift Data";
+
+        Map data = jsonDecode(response.body);
+
+        data.forEach((key, value) {
+
+          if(key == "gifts"){
+            stringResponse = "------gift Data------";
+            print(stringResponse);
+          }
+
+          print("--------------------------");
+          print(key);
+          print(value);
+
+        });
+      });
+    }
+
+
+    print("Response status : ${response.statusCode}");
+    // print("Response body : ${response.body}");
+  }
+
+  @override
+  void initState(){
+    fetchData();
+    print("Called initState.....");
+    super.initState();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
